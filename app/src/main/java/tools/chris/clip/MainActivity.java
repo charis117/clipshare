@@ -6,6 +6,8 @@ import android.os.*;
 import android.content.Intent;
 import android.widget.TextView;
 import android.widget.EditText;
+
+import java.net.ServerSocket;
 import java.net.Socket;
 import android.view.View;
 import java.io.IOException;
@@ -46,6 +48,20 @@ public class MainActivity extends Activity
 			EditText ed=(EditText)findViewById(R.id.mainEditText);
 			ed.setText(sh.getString(ipkeyName,"192.168.1."));
 		}
+		//Currently not implemented fully
+		Thread server=new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				try {
+					ServerSocket ss=new ServerSocket(1458);
+					Socket s=ss.accept();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 
     }
