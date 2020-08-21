@@ -38,47 +38,14 @@ public class MainActivity extends Activity
 
 		tv.setText("Text to send:"+text);
 		
-		Thread th=new Thread(){
-			public void run(){
-			
-				while(s==null|searching){
-					for(int i=10;i<30;i++){
-						try{
-							Log.v("TESTING","192.168.1."+i);
-							s=new Socket("192.168.1."+i,1456);
-							searching=false;
-
-						}catch(IOException e){
-							e.printStackTrace();
-						}
-					}
-				}
-				if(s!=null){
-					runOnUiThread(new Runnable(){
-
-							@Override
-							public void run(){
-								EditText ed=(EditText)findViewById(R.id.mainEditText);
-								String ip=s.getInetAddress().getHostAddress();
-								
-								ed.setText(ip);
-							}
-
-						
-					});
-					
-				}
-
-
-			}
-		};
-		th.start();
+		
 
 
     }
 
 
 	public void send(View v){
+		
 		EditText ed=(EditText)findViewById(R.id.mainEditText);
 		final String IP=ed.getText().toString();
 		Thread th=new Thread(){
