@@ -156,7 +156,7 @@ public class MainActivity extends Activity
 			public void onClick(DialogInterface dialogInterface, int i) {
 				ClipboardManager clip=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
 				clip.setText(text);
-				dialogInterface.dismiss();
+				//dialogInterface.dismiss();
 			}
 		});
     	AlertDialog ad=al.create();
