@@ -3,6 +3,7 @@ package tools.chris.clip;
 import android.app.*;
 import android.os.*;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.EditText;
 import java.net.Socket;
@@ -24,7 +25,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		try{
-		text=getIntent().getExtras().getString(Intent.EXTRA_TEXT,"NOIN");
+			text=getIntent().getExtras().getString(Intent.EXTRA_TEXT,"NOIN");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -43,8 +44,10 @@ public class MainActivity extends Activity
 				while(s==null|searching){
 					for(int i=10;i<30;i++){
 						try{
+							Log.v("TESTING","192.168.1."+i);
 							s=new Socket("192.168.1."+i,1456);
 							searching=false;
+
 						}catch(IOException e){
 							e.printStackTrace();
 						}
